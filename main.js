@@ -17,21 +17,24 @@ function repeat(str, repetitions) {
 }
 
 function startsWith(string, substring) {
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] === substring[i]) {
-      return true;
+  for (let i = 0; i < substring.length; i++) {
+    if (string[i] !== substring[i]) {
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
 function endsWith(str, substring) {
-  for (let i = str.length - 1; i > 0; i--) {
-    if (str[i] === substring[i]) {
-      return true;
+  for (let i = 0; i <= substring.length; i++) {
+    const substringIndex = substring.length - i;
+    const strIndex = str.length - i;
+    if (str[strIndex] !== substring[substringIndex]) {
+      return false;
     }
   }
-  return false;
+
+  return true;
 }
 
 
@@ -45,38 +48,53 @@ function includes(arr, item) {
 }
 
 function join(arr, separator = '') {
-  let newStr = '';
-
-  if (separator === '') {
-  for (let i = 0; i < arr.length; i++) {
-    if(arr[i] === arr.length - 1) {
-      newStr += arr[i];
-    } else {
-      newStr += `${arr[i]}${separator}`;
-    } 
+  let str = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    str += separator + arr[i];
   }
-}
-  return newStr;
+
+  return str;
 }
 
 
 function split(str, separator) {
-  const newArr = [];
+  let arr = [];
+  let strStartIndex = 0;
 
-  for (let i = 0; i < 1; i++) {
-    if (separator === undefined) {
-      newArr.push(str)
-    } else {
-      newArr.push(str[separator])
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === separator) {
+      arr.push(str.slice(strStartIndex, i));
+      strStartIndex = i + 1;
     }
   }
-  return newArr;
+
+  arr.push(str.slice(strStartIndex));
+
+  return arr;
 }
 
 function trimStart(str) {
+  let trimmed = '';
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== ' ') {
+      return str.slice(i);
+    }
+  }
+
+  return trimmed;
 }
 
 function trimEnd(str) {
+  let trimmed = '';
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (str[i] !== ' ') {
+      return str.slice(0, i + 1);
+    }
+  }
+
+  return trimmed;
 }
 
 
