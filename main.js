@@ -74,7 +74,7 @@ function split(str, separator) {
 }
 
 function trimStart(str) {
-  let trimmed = '';
+  let trimmedStr = '';
 
   for (let i = 0; i < str.length; i++) {
     if (str[i] !== ' ') {
@@ -82,11 +82,11 @@ function trimStart(str) {
     }
   }
 
-  return trimmed;
+  return trimmedStr;
 }
 
 function trimEnd(str) {
-  let trimmed = '';
+  let trimmedStr = '';
 
   for (let i = str.length - 1; i >= 0; i--) {
     if (str[i] !== ' ') {
@@ -94,7 +94,7 @@ function trimEnd(str) {
     }
   }
 
-  return trimmed;
+  return trimmedStr;
 }
 
 
