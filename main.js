@@ -48,11 +48,13 @@ function includes(arr, item) {
 }
 
 function join(arr, separator = '') {
-  let str = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    str += separator + arr[i];
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str += arr[i];
+    if (i !== arr.length - 1) {
+      str += separator;
+    }
   }
-
   return str;
 }
 
